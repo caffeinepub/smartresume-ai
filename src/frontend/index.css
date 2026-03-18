@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font Faces ─────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans[wght].woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* SmartResume AI — Deep Indigo + Teal Accent SaaS Palette */
+    --background: 0.98 0.004 265;
+    --foreground: 0.13 0.025 265;
+
+    --card: 1 0 0;
+    --card-foreground: 0.13 0.025 265;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.13 0.025 265;
+
+    /* Deep indigo as primary */
+    --primary: 0.38 0.18 275;
+    --primary-foreground: 0.99 0 0;
+
+    /* Soft violet secondary */
+    --secondary: 0.94 0.025 270;
+    --secondary-foreground: 0.3 0.15 275;
+
+    --muted: 0.95 0.015 265;
+    --muted-foreground: 0.52 0.04 265;
+
+    /* Teal/cyan accent — punchy contrast */
+    --accent: 0.88 0.06 195;
+    --accent-foreground: 0.18 0.08 200;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.018 265;
+    --input: 0.92 0.015 265;
+    --ring: 0.5 0.18 275;
+
+    /* Brand tokens */
+    --brand-indigo: 0.28 0.18 275;
+    --brand-violet: 0.45 0.2 290;
+    --brand-teal: 0.62 0.18 195;
+    --brand-sky: 0.72 0.14 210;
+    --brand-glow: 0.55 0.22 275;
+
+    --chart-1: 0.5 0.2 275;
+    --chart-2: 0.62 0.18 195;
+    --chart-3: 0.7 0.16 145;
+    --chart-4: 0.65 0.2 310;
+    --chart-5: 0.72 0.15 55;
+
+    --sidebar: 0.97 0.008 265;
+    --sidebar-foreground: 0.13 0.025 265;
+    --sidebar-primary: 0.38 0.18 275;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.88 0.06 195;
+    --sidebar-accent-foreground: 0.18 0.08 200;
+    --sidebar-border: 0.88 0.018 265;
+    --sidebar-ring: 0.5 0.18 275;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", "Outfit", sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .font-mono {
+    font-family: "Geist Mono", monospace;
+  }
+
+  /* Brand color utilities */
+  .text-brand-indigo { color: oklch(var(--brand-indigo)); }
+  .bg-brand-indigo { background-color: oklch(var(--brand-indigo)); }
+  .text-brand-violet { color: oklch(var(--brand-violet)); }
+  .bg-brand-violet { background-color: oklch(var(--brand-violet)); }
+  .text-brand-teal { color: oklch(var(--brand-teal)); }
+  .bg-brand-teal { background-color: oklch(var(--brand-teal)); }
+  .text-brand-sky { color: oklch(var(--brand-sky)); }
+  .bg-brand-sky { background-color: oklch(var(--brand-sky)); }
+
+  /* Hero gradient mesh */
+  .gradient-hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 20% -10%, oklch(0.38 0.18 275 / 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 10%, oklch(0.62 0.18 195 / 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, oklch(0.45 0.2 290 / 0.1) 0%, transparent 60%),
+      oklch(0.98 0.004 265);
+  }
+
+  .gradient-brand {
+    background: linear-gradient(135deg,
+      oklch(0.28 0.18 275) 0%,
+      oklch(0.42 0.22 285) 50%,
+      oklch(0.38 0.2 300) 100%
+    );
+  }
+
+  .gradient-teal {
+    background: linear-gradient(135deg,
+      oklch(0.55 0.2 195) 0%,
+      oklch(0.65 0.18 210) 100%
+    );
+  }
+
+  .gradient-section-soft {
+    background: linear-gradient(180deg,
+      oklch(0.98 0.004 265) 0%,
+      oklch(0.96 0.01 270) 50%,
+      oklch(0.98 0.004 265) 100%
+    );
+  }
+
+  .gradient-card-indigo {
+    background: linear-gradient(135deg,
+      oklch(0.95 0.03 275) 0%,
+      oklch(0.97 0.015 265) 100%
+    );
+  }
+
+  /* Glow effects */
+  .glow-indigo {
+    box-shadow: 0 0 40px oklch(0.38 0.18 275 / 0.25), 0 0 80px oklch(0.38 0.18 275 / 0.12);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 30px oklch(0.62 0.18 195 / 0.3), 0 0 60px oklch(0.62 0.18 195 / 0.15);
+  }
+
+  /* Card styles */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-elevated;
+  }
+
+  .card-glass {
+    background: oklch(1 0 0 / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.88 0.018 265 / 0.6);
+  }
+
+  /* Score circle gradient */
+  .score-excellent { color: oklch(0.62 0.18 145); }
+  .score-good { color: oklch(0.72 0.18 80); }
+  .score-poor { color: oklch(0.65 0.22 27); }
+
+  /* Orb decoration */
+  .orb {
+    border-radius: 100%;
+    filter: blur(80px);
+    pointer-events: none;
+    position: absolute;
+  }
+
+  /* Noise texture overlay */
+  .noise-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Resume preview animations */
+  .resume-section {
+    animation: fade-in-up 0.4s ease-out forwards;
+  }
+
+  /* Step connector line */
+  .step-line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, oklch(0.38 0.18 275 / 0.4), oklch(0.62 0.18 195 / 0.4));
+    transform: translateY(-50%);
+  }
+}
+
+/* ─── Print Styles ──────────────────────────────────────────────────────────── */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #resume-print-area,
+  #resume-print-area * {
+    visibility: visible !important;
+  }
+
+  #resume-print-area {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    background: white !important;
+    padding: 0.5in !important;
+    margin: 0 !important;
+  }
+
+  @page {
+    margin: 0.5in;
+    size: A4;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+  }
+}
